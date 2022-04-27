@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import models.Usuarios;
@@ -14,7 +15,7 @@ import models.Usuarios;
 public class Registro extends JFrame implements ActionListener{
     private JLabel nombre, usuario, apellidoP, apellidoM, correo, password;
     private JTextField txtNombre, txtUsuario, txtApellidoP, txtApellidoM, txtCorreo, txtPassword;
-    private JButton btnRegistrar;
+    private JButton btnRegistrar, btnregresar;
     
    public Registro(){
         JFrame registro = new JFrame();
@@ -170,21 +171,30 @@ public class Registro extends JFrame implements ActionListener{
        txtUsuario.setText("");
        txtPassword.setText("");
    }
-
+   public boolean notVoid(){
+       boolean not = false;
+       not = txtNombre.getText().equals("") && txtUsuario.getText().equals("") && txtApellidoP.getText().equals("") && txtApellidoM.getText().equals("") && txtCorreo.getText().equals("") && txtPassword.getText().equals("");
+       return not;
+   }
+   
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(btnRegistrar)){
-            String nombreh = txtNombre.getText();
-            String apellidoPh = txtApellidoP.getText();
-            String apellidoMh = txtApellidoM.getText();
-            String correoh = txtCorreo.getText();
-            String passwordh = txtPassword.getText();
-            String usuarioh = txtUsuario.getText();
-            Usuarios user = new Usuarios(usuarioh, nombreh, apellidoPh, apellidoMh, correoh, passwordh);
-            CreateController create = new CreateController();
-            create.insertUser(user);
-//            vaciar();
-            System.out.println(nombreh);
+            if(notVoid()){
+                JOptionPane.showMessageDialog(null, "No ha llenado un cuadro\nFavor de rellenar todos los cuadros");
+            }else{
+                String nombreh = txtNombre.getText();
+                String apellidoPh = txtApellidoP.getText();
+                String apellidoMh = txtApellidoM.getText();
+                String correoh = txtCorreo.getText();
+                String passwordh = txtPassword.getText();
+                String usuarioh = txtUsuario.getText();
+                Usuarios user = new Usuarios(usuarioh, nombreh, apellidoPh, apellidoMh, correoh, passwordh);
+                CreateController create = new CreateController();
+                create.insertUser(user);
+                vaciar();
+            }
+            
         }
     }
 }

@@ -19,7 +19,6 @@ public class ConnectionDB {
     public Connection getConnect(){
         try{
             connection = DriverManager.getConnection(url,user,password);
-            System.out.println("Conexion exitosa");
         }catch(SQLException e){
             System.err.println(e);
         }

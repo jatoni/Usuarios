@@ -20,7 +20,6 @@ public class loginController {
                 String usuario = result.getString("usuario");
                 String correo = result.getString("correo");
                 existe = usuario.equals(userEmail) || correo.equals(userEmail);
-                System.out.println(existe);
                 if(existe){
                     break;
                 }
@@ -39,7 +38,6 @@ public class loginController {
             while(result.next()){
                 String contra = result.getString("password");
                 existe = contra.equals(pass);
-                System.out.println(existe);
                 if(existe){
                     break;
                 }
