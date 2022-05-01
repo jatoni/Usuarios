@@ -19,7 +19,6 @@ public class Registro extends JFrame implements ActionListener{
     
    public Registro(){
         JFrame registro = new JFrame();
-        registro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         registro.setSize(800, 600);
         registro.setLocationRelativeTo(null);
         registro.setLayout(null);
